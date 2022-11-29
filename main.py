@@ -37,113 +37,108 @@ try:
     home = xbmcvfs.translatePath(__addon__.getAddonInfo('path').decode('utf-8'))
 except:
     home = xbmcvfs.translatePath(__addon__.getAddonInfo('path'))
-    
-search_icon = home+'/resources/media/search.png'
-favorite_icon = home+'/resources/media/favorite.png'
-recommended_icon = home+'/resources/media/recommended.png'
-news_icon = home+'/resources/media/news.png'
-viral_icon = home+'/resources/media/viral.png'
-podcast_icon = home+'/resources/media/podcast.png'
-leader_icon = home+'/resources/media/leader.png'
-entertaiment_icon = home+'/resources/media/entertaiment.png'
-sports_icon = home+'/resources/media/sports.png'
-science_icon = home+'/resources/media/science.png'
-technology_icon = home+'/resources/media/technology.png'
-vlog_icon = home+'/resources/media/vlog.png'
-settings_icon = home+'/resources/media/settings.png'
+
+search_icon = f'{home}/resources/media/search.png'
+favorite_icon = f'{home}/resources/media/favorite.png'
+recommended_icon = f'{home}/resources/media/recommended.png'
+news_icon = f'{home}/resources/media/news.png'
+viral_icon = f'{home}/resources/media/viral.png'
+podcast_icon = f'{home}/resources/media/podcast.png'
+leader_icon = f'{home}/resources/media/leader.png'
+entertaiment_icon = f'{home}/resources/media/entertaiment.png'
+sports_icon = f'{home}/resources/media/sports.png'
+science_icon = f'{home}/resources/media/science.png'
+technology_icon = f'{home}/resources/media/technology.png'
+vlog_icon = f'{home}/resources/media/vlog.png'
+settings_icon = f'{home}/resources/media/settings.png'
 lang = addon.getSetting('lang')
 favorites = os.path.join(profile, 'favorites.dat')
-if os.path.exists(favorites)==True:
-    FAV = open(favorites).read()
-else:
-    FAV = []
+FAV = open(favorites).read() if os.path.exists(favorites)==True else []
     
 
 def setlang(id):
     #english
     if int(lang)==0:
-        if id=='search':
-            return 'Search'
-        elif id=='favorites':
-            return 'Favorites'
-        elif id=='news':
-            return 'News'
-        elif id=='battle-leaderboard':
-            return 'Battle leaderboard'
-        elif id=='entertainment':
-            return 'Entertaiment'
-        elif id=='sports':
-            return 'Sports'
-        elif id=='science':
-            return 'Science'
-        elif id=='technology':
-            return 'Technology'           
-        elif id=='config':
-            return 'Settings'
-        elif id=='search-videos':
-            return 'Search for video'
-        elif id=='search-channel':
-            return 'Search for channel'
-        elif id=='page':
-            return 'Page'
-        elif id=='add':
+        if id == 'add':
             return 'Added to rumble favorites'
-        elif id=='remove':
-            return 'Removed from rumble favorites'
-        elif id=='addfav':
+        elif id == 'addfav':
             return 'Add to rumble favorites'
-        elif id=='removefav':
-            return 'Remove from rumble favorites'
-        elif id=='warning':
-            return 'Warning'             
-        elif id=='nofav':
+        elif id == 'battle-leaderboard':
+            return 'Battle leaderboard'
+        elif id == 'config':
+            return 'Settings'
+        elif id == 'entertainment':
+            return 'Entertaiment'
+        elif id == 'favorites':
+            return 'Favorites'
+        elif id == 'news':
+            return 'News'
+        elif id == 'nofav':
             return 'No videos or channels added to favorites'
-        elif id=='subscribers':
+        elif id == 'page':
+            return 'Page'
+        elif id == 'remove':
+            return 'Removed from rumble favorites'
+        elif id == 'removefav':
+            return 'Remove from rumble favorites'
+        elif id == 'science':
+            return 'Science'
+        elif id == 'search':
+            return 'Search'
+        elif id == 'search-channel':
+            return 'Search for channel'
+        elif id == 'search-videos':
+            return 'Search for video'
+        elif id == 'sports':
+            return 'Sports'
+        elif id == 'subscribers':
             return 'Subscribers'
+        elif id == 'technology':
+            return 'Technology'
+        elif id == 'warning':
+            return 'Warning'
         else:
             return 'Incorrect id'
-    #portuguese
+    elif id == 'add':
+        return 'Adicionado aos favoritos do rumble'
+    elif id == 'addfav':
+        return 'Adicionar aos favoritos do rumble'
+    elif id == 'battle-leaderboard':
+        return 'Quadro de liderança'
+    elif id == 'config':
+        return 'Definições'
+    elif id == 'entertainment':
+        return 'Entretenimento'
+    elif id == 'favorites':
+        return 'Favoritos'
+    elif id == 'news':
+        return 'Notícias'
+    elif id == 'nofav':
+        return 'Nenhum video ou canal adicionado nos favoritos'
+    elif id == 'page':
+        return 'Pagina'
+    elif id == 'remove':
+        return 'Removido dos favoritos do rumble'
+    elif id == 'removefav':
+        return 'Remover dos favoritos do rumble'
+    elif id == 'science':
+        return 'Ciência'
+    elif id == 'search':
+        return 'Pesquisar'
+    elif id == 'search-channel':
+        return 'Pesquisar por canal'
+    elif id == 'search-videos':
+        return 'Pesquisar por video'
+    elif id == 'sports':
+        return 'Esportes'
+    elif id == 'subscribers':
+        return 'Inscritos'
+    elif id == 'technology':
+        return 'Tecnologia'
+    elif id == 'warning':
+        return 'Aviso'
     else:
-        if id=='search':
-            return 'Pesquisar'
-        elif id=='favorites':
-            return 'Favoritos'
-        elif id=='news':
-            return 'Notícias'
-        elif id=='battle-leaderboard':
-            return 'Quadro de liderança'
-        elif id=='entertainment':
-            return 'Entretenimento'
-        elif id=='sports':
-            return 'Esportes'
-        elif id=='science':
-            return 'Ciência'
-        elif id=='technology':
-            return 'Tecnologia'            
-        elif id=='config':
-            return 'Definições'
-        elif id=='search-videos':
-            return 'Pesquisar por video'
-        elif id=='search-channel':
-            return 'Pesquisar por canal'
-        elif id=='page':
-            return 'Pagina'
-        elif id=='add':
-            return 'Adicionado aos favoritos do rumble'
-        elif id=='remove':
-            return 'Removido dos favoritos do rumble'
-        elif id=='addfav':
-            return 'Adicionar aos favoritos do rumble'
-        elif id=='removefav':
-            return 'Remover dos favoritos do rumble'
-        elif id=='warning':
-            return 'Aviso'             
-        elif id=='nofav':
-            return 'Nenhum video ou canal adicionado nos favoritos'
-        elif id=='subscribers':
-            return 'Inscritos'            
-        else:
-            return 'Incorrect id'
+        return 'Incorrect id'
             
         
 
@@ -163,30 +158,21 @@ def to_unicode(text, encoding='utf-8', errors='strict'):
     
 def get_search_string(heading='', message=''):
     """Ask the user for a search string"""
-    search_string = None
     keyboard = xbmc.Keyboard(message, heading)
     keyboard.doModal()
-    if keyboard.isConfirmed():
-        search_string = to_unicode(keyboard.getText())
-    return search_string
+    return to_unicode(keyboard.getText()) if keyboard.isConfirmed() else None
 
 
 def getRequest(url, ref):
     try:
-        if ref > '':
-            ref2 = ref
-        else:
-            ref2 = url
+        ref2 = ref if ref > '' else url
         cj = cookielib.CookieJar()
         opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
         opener.addheaders=[('Accept-Language', 'en-gb,en;q=0.5'),('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36'),('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'), ('Referer', ref2)]
         data = opener.open(url).read()
-        response = data.decode('utf-8')
-        return response
+        return data.decode('utf-8')
     except:
-        #pass
-        response = ''
-        return response
+        return ''
 
 ##menu
 def home_menu():
@@ -220,8 +206,8 @@ def pagination(url,page,cat,search=False):
     if url > '':
         if search and cat == 'video':
             pageUrl = url + search + "&page=" + str(int(page))
-        elif cat == 'channel' or cat == 'other':
-            pageUrl = url + "?page=" + str(int(page))
+        elif cat in ['channel', 'other']:
+            pageUrl = f"{url}?page={int(page)}"
         if int(page) == 1:
             if search:
                 status,total = list_rumble(url+search,cat)
@@ -232,32 +218,37 @@ def pagination(url,page,cat,search=False):
         if search and status == 'true' and cat == 'video' and int(page) < 10 and int(total) > 15:
             name = "[B]"+setlang('page') + " " + str(int(page) + 1) + "[/B]"
             li=xbmcgui.ListItem(name)
-            u=sys.argv[0] + "?mode=3&name=" + urllib.quote_plus(name) + \
-            "&url=" + urllib.quote_plus(url) + "&page=" + str(int(page) + 1) + "&cat=" + urllib.quote_plus(cat)+ "&search=" + urllib.quote_plus(search)
+            u = f"{sys.argv[0]}?mode=3&name={urllib.quote_plus(name)}&url={urllib.quote_plus(url)}&page={str(int(page) + 1)}&cat={urllib.quote_plus(cat)}&search={urllib.quote_plus(search)}"
+
             xbmcplugin.addDirectoryItem(addon_handle, u, li, True)
         elif not search and cat == 'channel' and status == 'true' and int(page) < 10 and int(total) > 15:
             name = "[B]"+setlang('page') + " " + str(int(page) + 1) + "[/B]"
             li=xbmcgui.ListItem(name)
-            u=sys.argv[0] + "?mode=3&name=" + urllib.quote_plus(name) + \
-            "&url=" + urllib.quote_plus(url) + "&page=" + str(int(page) + 1) + "&cat=" + urllib.quote_plus(cat)
+            u = f"{sys.argv[0]}?mode=3&name={urllib.quote_plus(name)}&url={urllib.quote_plus(url)}&page={str(int(page) + 1)}&cat={urllib.quote_plus(cat)}"
+
             xbmcplugin.addDirectoryItem(addon_handle, u, li, True)
         elif not search and cat == 'other' and status == 'true' and int(page) < 10 and int(total) > 15:
             name = "[B]"+setlang('page') + " " + str(int(page) + 1) + "[/B]"
             li=xbmcgui.ListItem(name)
-            u=sys.argv[0] + "?mode=3&name=" + urllib.quote_plus(name) + \
-            "&url=" + urllib.quote_plus(url) + "&page=" + str(int(page) + 1) + "&cat=" + urllib.quote_plus(cat)
-            xbmcplugin.addDirectoryItem(addon_handle, u, li, True)            
+            u = f"{sys.argv[0]}?mode=3&name={urllib.quote_plus(name)}&url={urllib.quote_plus(url)}&page={str(int(page) + 1)}&cat={urllib.quote_plus(cat)}"
+
+            xbmcplugin.addDirectoryItem(addon_handle, u, li, True)
     SetView('WideList')
     xbmcplugin.endOfDirectory(addon_handle)
 
 
 def get_image(data,id):
-    image_re = re.compile("i.user-image--img--id-"+str(id)+".+?{ background-image: url(.+?);", re.MULTILINE|re.DOTALL|re.IGNORECASE).findall(data)
-    if image_re !=[]:
-        image = str(image_re[0]).replace('(', '').replace(')', '')
-    else:
-        image = ''
-    return image
+    image_re = re.compile(
+        f"i.user-image--img--id-{str(id)}"
+        + ".+?{ background-image: url(.+?);",
+        re.MULTILINE | re.DOTALL | re.IGNORECASE,
+    ).findall(data)
+
+    return (
+        str(image_re[0]).replace('(', '').replace(')', '')
+        if image_re != []
+        else ''
+    )
 
 
 def list_rumble(url,cat):
